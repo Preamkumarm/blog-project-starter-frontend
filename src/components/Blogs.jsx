@@ -26,7 +26,7 @@ function Blogs() {
     const handleLike = async (blog_id) => {
         try {
             const response = await axios.patch(`http://localhost:5000/api/blogs/like/${blog_id}`);
-            // After successfully updating the likes count in the backend, fetch the updated list of blogs
+           
             if (response.status === 200) {
                 axios.get("http://localhost:5000/api/blogs").then((res) => {
                     console.log(res.data)
@@ -41,7 +41,7 @@ function Blogs() {
     };
 
     const handleNewBlogSubmit = (event) => {
-        event.preventDefault(); // Prevent form from refreshing the page
+        event.preventDefault(); 
         const today = new Date();
         const date = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 

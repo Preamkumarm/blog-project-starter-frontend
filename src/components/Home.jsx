@@ -7,24 +7,28 @@ import DB from "../assets/data-server.png"
 import JS from "../assets/js.png"
 import REACTICON from "../assets/physics.png"
 import NODE from "../assets/node-js.png"
-import P1 from "../assets/p1.jpg"
-import P2 from "../assets/p2.png"
-import P3 from "../assets/p3.png"
+import { portfolio } from '../data'
 import BlogImage from "../assets/blogImage.png"
 import { useNavigate } from 'react-router-dom';
 import Footer from './common/Footer'
 
 function Home() {
     const navigate = useNavigate()
+
     return (
         <div>
 
             <div className='flex items-center justify-center'>
                 <div className="w-full sm:w-1/2 flex-col justify-center">
-                    <h2 className='text-3xl md:text-6xl font-bold pb-2'>Hy! I Am</h2>
-                    <h2 className='text-4xl md:text-7xl font-bold text-orange-400 py-2'>Jacky Thomas</h2>
+                    <h2 className='text-3xl md:text-6xl font-bold pb-2'>Hi! It's</h2>
+                    <h2 className='text-4xl md:text-7xl font-bold text-orange-400 py-2'>Pream</h2>
+                    <h3 class="text-animation">I'm a <span></span></h3>
                     <img src={BlogProfileImage} className='w-60 block sm:hidden' alt="Blog Profile Image" />
-                    <p className='py-2'>I can create stunning website for your company, Do check my works. I won't disappoint you. Try me for 7 Days before you decide anything.</p>
+                    <p className='py-2'> Passionate fresher in web development proficient in HTML, CSS,
+          JavaScript, ReactJS, Tailwind CSS, Node.js, ExpressJS,MongoDB, and
+          Firebase. Dedicated to crafting engaging user interfaces and
+          experiences, eager to contribute to innovative projects, and grow in
+          the dynamic field of web development.</p>
                     <button className='button-style mt-2'>Hire Me</button>
                 </div>
                 <div className='justify-center hidden sm:block'>
@@ -36,6 +40,7 @@ function Home() {
 
 
             <div className='flex justify-evenly py-6'>
+                
                 <img src={HTML} style={{ width: "50px" }} />
                 <img src={CSS} style={{ width: "50px" }} />
                 <img src={JS} style={{ width: "50px" }} />
@@ -72,13 +77,16 @@ function Home() {
 
             <div>
                 <h2 className='text-center text-5xl my-14 font-bold'>Checkout My Live <span className='text-orange-400'>Projects</span> Here</h2>
-                <div className='flex justify-around my-5 flex-col sm:flex-row'>
+                <div className=' justify-around my-5 grid grid-cols-3 gap-3 sm:flex-row'>
 
-                    <img src={P1} className='w-64 border rounded-md cursor-pointer' alt="" />
-
-                    <img src={P2} className='w-64 border rounded-md cursor-pointer' alt="" />
-
-                    <img src={P3} className='w-64 border rounded-md cursor-pointer' alt="" />
+                   {
+                    portfolio.map(function(item,index){
+                        return <div>
+                            <img src={item.image} className='w-64 h-64 border rounded-md cursor-pointer' />
+                            <h2 className='text-xl font-semibold ml-14'>{item.title}</h2>
+                        </div>
+                    })
+                   }
 
                 </div>
             </div>
