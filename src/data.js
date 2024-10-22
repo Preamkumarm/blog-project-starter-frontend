@@ -4,6 +4,9 @@ import P3 from "../src/assets/skin.webp"
 import pic1 from "../src/assets/pic1.jpg"
 import farm from "../src/assets/farm.webp"
 import f from "../src/assets/f.jpg"
+import pic2 from "../src/assets/pic1.png"
+import pic5 from "../src/assets/pic5.jpg"
+import pic6 from "../src/assets/pic6.webp"
 
 export const  portfolio = [
     {
@@ -54,3 +57,17 @@ export const  portfolio = [
         description: "An online car rental and management platform",
     },
 ]; 
+
+export const herobg=[{
+    id:1,
+    imageSrc:pic2
+},
+{
+    id:2,
+    imageSrc:pic5
+}
+,
+{
+    id:3,
+    imageSrc:pic6
+}]

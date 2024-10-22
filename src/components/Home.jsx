@@ -7,23 +7,35 @@ import DB from "../assets/data-server.png"
 import JS from "../assets/js.png"
 import REACTICON from "../assets/physics.png"
 import NODE from "../assets/node-js.png"
-import { portfolio } from '../data'
+import { portfolio,herobg } from '../data'
 import BlogImage from "../assets/blogImage.png"
 import { useNavigate } from 'react-router-dom';
 import Footer from './common/Footer'
-
+import { useState,useEffect } from 'react'
 function Home() {
     const navigate = useNavigate()
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % herobg.length 
+      );
+      setStartIndex((prevIndex)=>(prevIndex+1) % herobg.length);
+    }, 2000); 
+
+    return () => clearInterval(interval); 
+  }, []);
 
     return (
         <div>
 
             <div className='flex items-center justify-center'>
-                <div className="w-full sm:w-1/2 flex-col justify-center">
+                <div className="w-full sm:w-1/2 flex-col justify-center -ml-96">
                     <h2 className='text-3xl md:text-6xl font-bold pb-2'>Hi! It's</h2>
                     <h2 className='text-4xl md:text-7xl font-bold text-orange-400 py-2'>Pream</h2>
                     <h3 class="text-animation">I'm a <span></span></h3>
-                    <img src={BlogProfileImage} className='w-60 block sm:hidden' alt="Blog Profile Image" />
                     <p className='py-2'> Passionate fresher in web development proficient in HTML, CSS,
           JavaScript, ReactJS, Tailwind CSS, Node.js, ExpressJS,MongoDB, and
           Firebase. Dedicated to crafting engaging user interfaces and
@@ -32,7 +44,24 @@ function Home() {
                     <button className='button-style mt-2'>Hire Me</button>
                 </div>
                 <div className='justify-center hidden sm:block'>
-                    <img src={BlogProfileImage} className='w-60 md:w-96 ' alt="Blog Profile Image" />
+                <div>
+        {herobg.map((item, index) => (
+        <div key={index}>
+          <div className="">
+            <div className="">
+              {index === currentImageIndex && (
+                <img
+                  src={item.imageSrc}
+                  alt={`List ${index + 1}`}
+                  className="w-72 h-auto absolute top-0 transition-all duration-1000 ease-in-out transform  translate-x-10 translate-y-40"
+                />
+              )}
+            </div>
+          </div>
+          {/* <h1 className="transform translate-y-5 text-lg">{item.title}</h1> */}
+        </div>
+      ))}
+      </div>
 
                 </div>
 
